@@ -81,3 +81,41 @@ heroku create -s cedar --buildpack http://github.com/judofyr/perloku.git
 git push heroku master
 ```
 
+Watch:
+
+```
+Counting objects: 5, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 808 bytes, done.
+Total 5 (delta 0), reused 0 (delta 0)
+
+-----> Heroku receiving push
+-----> Fetching custom buildpack... done
+-----> Perloku app detected
+-----> Vendoring Perl
+       Using Perl 5.14.2
+-----> Installing dependencies
+--> Working on /tmp/build_19tm6pb8ch1qa
+Configuring /tmp/build_19tm6pb8ch1qa ... OK
+==> Found dependencies: Mojolicious
+--> Working on Mojolicious
+Fetching http://search.cpan.org/CPAN/authors/id/T/TE/TEMPIRE/Mojolicious-2.48.tar.gz ... OK
+Configuring Mojolicious-2.48 ... OK
+Building Mojolicious-2.48 ... OK
+Successfully installed Mojolicious-2.48
+<== Installed dependencies for /tmp/build_19tm6pb8ch1qa. Finishing.
+1 distribution installed
+       Dependencies installed
+-----> Discovering process types
+       Procfile declares types   -> (none)
+       Default types for Perloku -> web
+-----> Compiled slug size is 12.4MB
+-----> Launching...gi done, v5
+       http://perloku-example.herokuapp.com deployed to Heroku
+
+To git@heroku.com:perloku-example.git
+ * [new branch]      master -> master
+```
+
+[Enjoy!](http://perloku-example.herokuapp.com)
