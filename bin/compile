@@ -31,7 +31,7 @@ if [ -f $BUILD_DIR/Makefile.PL ]; then
   mkdir -p "$CACHE_DIR"
   $CPANM --notest --installdeps $BUILD_DIR
 
-  mv "$CACHE_DEPS" "$VENDOR_DEPS"
+  cp -R "$CACHE_DEPS" "$VENDOR_DEPS"
 
   echo "Dependencies installed" | indent
 fi
