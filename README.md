@@ -32,7 +32,7 @@ Welcome to the Mojolicious real-time web framework!
 </html>
 ```
 
-## Step 2 (optional)
+## Step 2
 
 Create a Makefile.PL with your dependencies:
 
