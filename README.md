@@ -62,7 +62,12 @@ given as an enviroment variable:
 ./app.pl daemon --listen http://*:$PORT
 ```
 
-Remember to `chmod +x Perloku`!
+Test that you can start the server:
+
+```sh
+chmod +x Perloku
+PORT=3000 ./Perloku
+```
 
 ## Step 4
 
