@@ -26,7 +26,7 @@ if [ -f $BUILD_DIR/Makefile.PL ]; then
   echo "-----> Installing dependencies"
   VENDOR_DEPS="$BUILD_DIR/vendor/perl-deps"
   CACHE_DEPS="$CACHE_DIR/perl-deps"
-  CPANM="perl -S $(which cpanm) -l $VENDOR_DEPS"
+  CPANM="perl -S $(which cpanm) -l $CACHE_DEPS"
 
   mkdir -p "$CACHE_DIR"
   $CPANM --notest --installdeps $BUILD_DIR
