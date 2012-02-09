@@ -29,7 +29,7 @@ if [ -f $BUILD_DIR/Makefile.PL ]; then
   CPANM="perl -S $(which cpanm) -l $CACHE_DEPS"
 
   mkdir -p "$CACHE_DIR"
-  $CPANM --notest --installdeps $BUILD_DIR
+  $CPANM --notest --installdeps $BUILD_DIR | indent
 
   cp -R "$CACHE_DEPS" "$VENDOR_DEPS"
 
