@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -x $1/Perloku ]; then
+  echo "Perloku"
+  exit 0
+else
+  exit 1
+fi
+

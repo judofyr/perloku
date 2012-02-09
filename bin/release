@@ -1,0 +1,12 @@
+#!/bin/sh
+
+BUILD_DIR=$1
+
+cat << EOF
+---
+config_vars:
+  PATH: /app/vendor/perl/bin:/usr/bin:/bin
+  PERL5OPT: -Mlocal::lib=/app/vendor/perl-deps
+default_process_types:
+  web: ./Perloku $PORT
+EOF

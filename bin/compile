@@ -1,0 +1,38 @@
+#!/bin/sh
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+PERL_VERSION="5.14.2"
+PERL_PACKAGE="perloku.s3.amazonaws.com/perl-$PERL_VERSION.tgz"
+
+VENDORED_PERL="$BUILD_DIR/vendor/perl"
+
+echo "-----> Vendoring Perl"
+
+mkdir -p $VENDORED_PERL  && curl $PERL_PACKAGE -s -o -  | tar xzf - -C $VENDORED_PERL
+
+# Set up so we can use Perl right away
+export PATH="$VENDORED_PERL/bin:$PATH"
+export PERL5LIB="$VENDORED_PERL/lib/$PERL_VERSION:$VENDORED_PERL/lib/site_perl/$PERL_VERSION"
+
+echo "Using Perl $PERL_VERSION" | indent
+
+if [ -f $BUILD_DIR/Makefile.PL ]; then
+  echo "-----> Installing dependencies"
+  VENDOR_DEPS="$BUILD_DIR/vendor/perl-deps"
+  CACHE_DEPS="$CACHE_DIR/perl-deps"
+  CPANM="perl -S $(which cpanm) -l $VENDOR_DEPS"
+
+  mkdir -p "$CACHE_DIR"
+  $CPANM --notest --installdeps $BUILD_DIR
+
+  mv "$CACHE_DEPS" "$VENDOR_DEPS"
+
+  echo "Dependencies installed" | indent
+fi
+

@@ -1,0 +1,22 @@
+#!/bin/sh
+PERL_VERSION="perl-5.14.2"
+PERLBREW_URL="http://install.perlbrew.pl"
+CPANM_URL="http://cpanmin.us"
+
+PERLBREW_ROOT="/tmp/perl"
+PERLBREW_INSTALL_OPTIONS="-Duserelocatableinc -n -v"
+
+PERL_ROOT="$PERLBREW_ROOT/perls/$PERL_VERSION"
+
+vulcan build -v -p "$PERL_ROOT" -c "
+echo '
+export PERLBREW_ROOT=$PERLBREW_ROOT
+curl -kL $PERLBREW_URL | bash
+source $PERLBREW_ROOT/etc/bashrc
+perlbrew init
+perlbrew install $PERL_VERSION $PERLBREW_INSTALL_OPTIONS
+perlbrew use $PERL_VERSION
+curl -L $CPANM_URL | perl - --self-upgrade
+cpanm local::lib
+' | bash"
+
