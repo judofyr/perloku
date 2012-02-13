@@ -22,17 +22,23 @@ export PERL5LIB="$VENDORED_PERL/lib/$PERL_VERSION:$VENDORED_PERL/lib/site_perl/$
 
 echo "Using Perl $PERL_VERSION" | indent
 
-if [ -f $BUILD_DIR/Makefile.PL ]; then
-  echo "-----> Installing dependencies"
-  VENDOR_DEPS="$BUILD_DIR/vendor/perl-deps"
-  CACHE_DEPS="$CACHE_DIR/perl-deps"
-  CPANM="perl -S $(which cpanm) -l $CACHE_DEPS"
+CPANM="perl -S cpanm --notest"
 
-  mkdir -p "$CACHE_DIR"
-  $CPANM --notest --installdeps $BUILD_DIR 2>&1 | indent
+echo "-----> Installing Carton"
+$CPANM carton
 
-  cp -R "$CACHE_DEPS" "$VENDOR_DEPS"
+# Clear previous cache dir
+rm -rf "$CACHE_DIR/perl-deps"
+VENDOR_DEPS="$BUILD_DIR/local"
+CACHE_DEPS="$CACHE_DIR/local"
 
-  echo "Dependencies installed" | indent
+if [ -f $BUILD_DIR/app.psgi ]; then
+  echo "-----> Installing Starman"
+  $CPANM -l $CACHE_DEPS Starman
 fi
+
+echo "-----> Installing dependencies"
+perl -S carton install --path "$CACHE_DEPS" 2>&1 | indent
+cp -R "$CACHE_DEPS" "$VENDOR_DEPS"
+echo "Dependencies installed" | indent
 

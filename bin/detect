@@ -1,9 +1,10 @@
 #!/bin/sh
 
-if [ -x $1/Perloku ]; then
-  echo "Perloku"
-  exit 0
+[ -f $1/carton.lock ] || exit 1
+
+if [ -f $1/app.psgi ]; then
+  echo "PSGI"
 else
-  exit 1
+  echo "Perl"
 fi
 
