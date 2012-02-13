@@ -6,7 +6,7 @@ cat << EOF
 ---
 config_vars:
   PATH: /app/vendor/perl/bin:/usr/bin:/bin
-  PERL5OPT: -Mlocal::lib=/app/local
+  PERL5OPT: -Mlocal::lib=/app/vendor/perl-deps
 default_process_types:
-  web: perl -S starman --preload-app --port \$PORT
+  web: ./Perloku $PORT
 EOF

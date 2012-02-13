@@ -3,7 +3,7 @@ Perloku
 
 Deploy Perl applications in seconds.
 
-## Step 1: App
+## Step 1
 
 Write an app:
 
@@ -32,7 +32,7 @@ Welcome to the Mojolicious real-time web framework!
 </html>
 ```
 
-## Step 2: Dependencies
+## Step 2
 
 Create a Makefile.PL with your dependencies:
 
@@ -52,30 +52,31 @@ WriteMakefile(
 );
 ```
 
-Run Carton and generate a `carton.lock`:
+## Step 3
+
+Create an executable file called Perloku which runs a server on the port
+given as an enviroment variable:
 
 ```sh
-carton install
-git add carton.lock
-git commit -m "Added carton.lock"
+#!/bin/sh
+./app.pl daemon --listen http://*:$PORT
 ```
 
-## Step 3: Server
-
-If you're using PSGI you can simply create an `app.psgi` and Perloku will
-automatically run the app using Starman.
-
-If you're not using PSGI, you must create a
-[Procfile](http://devcenter.heroku.com/articles/procfile) that tells
-Heroku how to run your server:
-
-```
-web: ./app.pl daemon --listen http://*:$PORT
-```
-
-## Step 4: Deploy
+Test that you can start the server:
 
 ```sh
+chmod +x Perloku
+PORT=3000 ./Perloku
+```
+
+## Step 4
+
+Deploy:
+
+```sh
+git init
+git add .
+git commit -m "Initial version"
 heroku create -s cedar --buildpack http://github.com/judofyr/perloku.git
 git push heroku master
 ```
