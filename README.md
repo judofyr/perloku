@@ -94,18 +94,18 @@ Total 5 (delta 0), reused 0 (delta 0)
 -----> Fetching custom buildpack... done
 -----> Perloku app detected
 -----> Vendoring Perl
-       Using Perl 5.14.2
+       Using Perl 5.16.2
 -----> Installing dependencies
---> Working on /tmp/build_19tm6pb8ch1qa
-Configuring /tmp/build_19tm6pb8ch1qa ... OK
-==> Found dependencies: Mojolicious
---> Working on Mojolicious
-Fetching http://search.cpan.org/CPAN/authors/id/T/TE/TEMPIRE/Mojolicious-2.48.tar.gz ... OK
-Configuring Mojolicious-2.48 ... OK
-Building Mojolicious-2.48 ... OK
-Successfully installed Mojolicious-2.48
-<== Installed dependencies for /tmp/build_19tm6pb8ch1qa. Finishing.
-1 distribution installed
+       --> Working on /tmp/build_19tm6pb8ch1qa
+       Configuring /tmp/build_19tm6pb8ch1qa ... OK
+       ==> Found dependencies: Mojolicious
+       --> Working on Mojolicious
+       Fetching http://search.cpan.org/CPAN/authors/id/T/TE/TEMPIRE/Mojolicious-2.48.tar.gz ... OK
+       Configuring Mojolicious-2.48 ... OK
+       Building Mojolicious-2.48 ... OK
+       Successfully installed Mojolicious-2.48
+       <== Installed dependencies for /tmp/build_19tm6pb8ch1qa. Finishing.
+       1 distribution installed
        Dependencies installed
 -----> Discovering process types
        Procfile declares types   -> (none)
