@@ -62,6 +62,13 @@ given as an enviroment variable:
 ./app.pl daemon --listen http://*:$PORT
 ```
 
+Additional steps for Windows users:
+
+```sh
+git update-index --chmod=+x Perloku
+git update-index --chmod=+x app.pl
+```
+
 Test that you can start the server:
 
 ```sh
