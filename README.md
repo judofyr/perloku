@@ -62,12 +62,6 @@ given as an enviroment variable:
 ./app.pl daemon --listen http://*:$PORT
 ```
 
-Additional steps for Windows users:
-
-```sh
-git update-index --chmod=+x Perloku
-git update-index --chmod=+x app.pl
-```
 
 Test that you can start the server:
 
@@ -83,10 +77,13 @@ Deploy:
 ```sh
 git init
 git add .
+git update-index --chmod=+x Perloku (only if using Windows)
+git update-index --chmod=+x app.pl (only if using Windows)
 git commit -m "Initial version"
 heroku create -s cedar --buildpack http://github.com/judofyr/perloku.git
 git push heroku master
 ```
+
 
 Watch:
 
