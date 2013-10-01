@@ -1,5 +1,5 @@
 #!/bin/sh
-PERL_VERSION="perl-5.16.2"
+PERL_VERSION="perl-5.18.1"
 PERLBREW_URL="http://install.perlbrew.pl"
 CPANM_URL="http://cpanmin.us"
 

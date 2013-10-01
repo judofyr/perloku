@@ -7,7 +7,7 @@ indent() {
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-PERL_VERSION="5.16.2"
+PERL_VERSION="5.18.1"
 PERL_PACKAGE="perloku.s3.amazonaws.com/perl-$PERL_VERSION.tgz"
 
 VENDORED_PERL="$BUILD_DIR/vendor/perl"
