@@ -52,6 +52,14 @@ WriteMakefile(
 );
 ```
 
+Alternately, you may create a
+[cpanfile](http://search.cpan.org/~miyagawa/Module-CPANfile-1.0002/lib/cpanfile.pod)
+that lists dependencies instead:
+
+```
+requires 'Mojolicious', '2.0';
+```
+
 ## Step 3
 
 Create an executable file called Perloku which runs a server on the port
